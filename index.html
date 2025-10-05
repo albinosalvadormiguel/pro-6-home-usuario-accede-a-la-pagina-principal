@@ -18,6 +18,7 @@
       input, textarea { padding:8px; width: 320px; max-width: 100%; }
       button { padding:8px 12px; }
       section { margin-bottom: 36px; }
+      #sugerencias { border: 1px dashed #aaa; padding: 8px; margin-top: 8px; }
     </style>
   </head>
   <body>
@@ -43,6 +44,7 @@
         <input id="emailPrueba" type="email" placeholder="tu@email" />
         <button id="btnEnviarPrueba">Enviar prueba</button>
         <div id="resultadoPrueba" class="hidden" role="status">Automatización enviada correctamente</div>
+        <div id="errorPrueba" class="hidden" role="alert">No se pudo completar la prueba. Inténtalo más tarde.</div>
       </section>
 
       <section id="servicios"><h2>Servicios</h2></section>
@@ -63,6 +65,7 @@
         </form>
         <div id="confirmacionContacto" class="hidden" role="status">Mensaje enviado</div>
         <div id="errorContacto" class="hidden" role="alert">No se pudo completar la prueba. Inténtalo más tarde.</div>
+        <div id="sugerencias" class="hidden" role="status">Sugerencias: Automatizar envío de emails, Pipeline de ventas</div>
       </section>
     </main>
 
@@ -100,20 +103,32 @@
         const descripcion = document.getElementById('descripcion');
         const confirm = document.getElementById('confirmacionContacto');
         const error = document.getElementById('errorContacto');
+        const sugerencias = document.getElementById('sugerencias');
         confirm.classList.add('hidden');
         error.classList.add('hidden');
+        sugerencias.classList.add('hidden');
         if (!nombre.value) { nombre.classList.add('error'); nombre.style.borderColor = 'red'; return; }
         if (!correo.value) { correo.classList.add('error'); correo.style.borderColor = 'red'; return; }
         if (!descripcion.value) { descripcion.classList.add('error'); descripcion.style.borderColor = 'red'; return; }
+        // Sugerencias simples por palabras clave
+        if (/email|ventas/i.test(descripcion.value)) {
+          sugerencias.classList.remove('hidden');
+        }
         confirm.classList.remove('hidden');
       });
 
       document.getElementById('btnEnviarPrueba').addEventListener('click', () => {
         const email = document.getElementById('emailPrueba');
         const result = document.getElementById('resultadoPrueba');
+        const error = document.getElementById('errorPrueba');
         if (email.value && email.value.includes('@')) {
           result.textContent = 'Automatización enviada correctamente';
           result.classList.remove('hidden');
+          error.classList.add('hidden');
+        } else {
+          // Mostrar error específico para TAL-13
+          error.classList.remove('hidden');
+          result.classList.add('hidden');
         }
       });
     </script>

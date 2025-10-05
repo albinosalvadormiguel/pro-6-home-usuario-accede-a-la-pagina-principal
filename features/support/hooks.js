@@ -1,36 +1,21 @@
 const { BeforeAll, AfterAll, Before, After, setDefaultTimeout } = require('@cucumber/cucumber');
 const { chromium } = require('playwright');
-const { spawn } = require('child_process');
-const http = require('http');
 
 setDefaultTimeout(30 * 1000);
 
 let browser;
-let devServer;
-
-async function waitForServer(url, timeoutMs = 15000) {
-  const start = Date.now();
-  return new Promise((resolve, reject) => {
-    const tryOnce = () => {
-      const req = http.get(url, () => resolve(true));
-      req.on('error', () => {
-        if (Date.now() - start > timeoutMs) return reject(new Error('Dev server not reachable'));
-        setTimeout(tryOnce, 500);
-      });
-      req.end();
-    };
-    tryOnce();
-  });
-}
+let viteServer;
 
 BeforeAll(async () => {
-  // Start Vite dev server if not running
-  devServer = spawn(process.platform === 'win32' ? 'npm.cmd' : 'npm', ['run', 'dev'], {
-    stdio: 'ignore',
-    shell: false,
+  // Importar Vite dinámicamente (ESM) para usarlo desde CommonJS
+  const vite = await import('vite');
+  // Start Vite programmatically to avoid Windows spawn issues
+  viteServer = await vite.createServer({
+    root: process.cwd(),
+    server: { port: 5173, strictPort: true },
+    logLevel: 'error'
   });
-  // Wait until server is up
-  await waitForServer('http://localhost:5173');
+  await viteServer.listen();
   browser = await chromium.launch({ headless: true });
 });
 
@@ -49,7 +34,7 @@ AfterAll(async () => {
   if (browser) {
     await browser.close();
   }
-  if (devServer && !devServer.killed) {
-    devServer.kill('SIGTERM');
+  if (viteServer) {
+    await viteServer.close();
   }
 });

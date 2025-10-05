@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Recuperar contraseña</title>
+  </head>
+  <body>
+    <main>
+      <h1>Recuperar contraseña</h1>
+      <label for="recuperar-correo">Correo</label>
+      <input id="recuperar-correo" type="email" />
+      <button id="recuperar-enviar">Enviar enlace</button>
+      <div id="recuperar-confirmacion" style="display:none">Hemos enviado un enlace de restablecimiento</div>
+    </main>
+    <script>
+      document.getElementById('recuperar-enviar').addEventListener('click', () => {
+        const email = document.getElementById('recuperar-correo').value;
+        if (email) {
+          document.getElementById('recuperar-confirmacion').style.display = 'block';
+        }
+      });
+    </script>
+  </body>
+</html>

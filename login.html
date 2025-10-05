@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login</title>
+  </head>
+  <body>
+    <main>
+      <h1>Login</h1>
+      <label for="login-correo">Correo</label>
+      <input id="login-correo" type="email" />
+      <label for="login-password">Contraseña</label>
+      <input id="login-password" type="password" />
+      <button id="login-ingresar">Ingresar</button>
+      <div id="login-ok" style="display:none">Sesión iniciada</div>
+    </main>
+    <script>
+      document.getElementById('login-ingresar').addEventListener('click', () => {
+        const email = document.getElementById('login-correo').value;
+        const pass = document.getElementById('login-password').value;
+        if (email && pass) {
+          document.getElementById('login-ok').style.display = 'block';
+          // redirigir a home simulando login exitoso
+          setTimeout(() => (window.location.href = '/'), 50);
+        }
+      });
+    </script>
+  </body>
+</html>

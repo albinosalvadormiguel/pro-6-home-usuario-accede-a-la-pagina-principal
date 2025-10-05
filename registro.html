@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Registro</title>
+  </head>
+  <body>
+    <main>
+      <h1>Registro</h1>
+      <label for="registro-correo">Correo</label>
+      <input id="registro-correo" type="email" />
+      <label for="registro-password">Contraseña</label>
+      <input id="registro-password" type="password" />
+      <button id="registro-crear">Crear cuenta</button>
+      <div id="registro-confirmacion" style="display:none">Cuenta creada</div>
+    </main>
+    <script>
+      document.getElementById('registro-crear').addEventListener('click', () => {
+        const email = document.getElementById('registro-correo').value;
+        const pass = document.getElementById('registro-password').value;
+        if (email && pass) {
+          document.getElementById('registro-confirmacion').style.display = 'block';
+        }
+      });
+    </script>
+  </body>
+</html>
