@@ -4,7 +4,7 @@ const { expect } = require('@playwright/test');
 
 // TAL-3: Registro
 Given('el usuario está en la página de registro', async function () {
-  await this.page.goto(this.baseUrl + '/registro.html');
+  await this.page.goto(this.baseUrl + '/src/pages/users/registro.html');
 });
 
 When('introduce un correo válido y una contraseña segura', async function () {
@@ -28,7 +28,7 @@ Then('se muestra un mensaje de confirmación de registro', async function () {
 
 // TAL-4: Login
 Given('el usuario tiene una cuenta registrada', async function () {
-  await this.page.goto(this.baseUrl + '/login.html');
+  await this.page.goto(this.baseUrl + '/src/pages/users/login.html');
 });
 
 When('introduce sus credenciales correctas', async function () {
@@ -47,7 +47,7 @@ Then('redirigirlo a su panel o al inicio', async function () {
 
 // TAL-5: Recuperar contraseña
 Given('el usuario olvidó su contraseña', async function () {
-  await this.page.goto(this.baseUrl + '/recuperar.html');
+  await this.page.goto(this.baseUrl + '/src/pages/users/recuperar.html');
 });
 
 When('solicita recuperación con su correo registrado', async function () {

@@ -17,8 +17,8 @@ When('el usuario hace clic en "Servicios"', async function () {
 });
 
 Then('el sistema debe redirigir correctamente a la página de servicios', async function () {
-  // Para anclas locales, comprobamos visibilidad de la sección Servicios
-  await expect(this.page.locator('#servicios')).toBeVisible();
+  await expect(this.page).toHaveURL(new RegExp('/src/pages/servicios.html'));
+  await expect(this.page.getByRole('heading', { level: 1, name: 'Servicios' })).toBeVisible();
 });
 
 Given('el usuario está en cualquier página', async function () {

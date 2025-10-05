@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contacto — Irydium</title>
+    <link rel="canonical" href="/contacto.html" />
+    <link rel="stylesheet" href="/public/styles.css" />
+  </head>
+  <body>
+    <header>
+      <div id="logo" class="logo">MiLogo</div>
+      <nav aria-label="Menú principal">
+        <a href="/index.html">Home</a>
+        <a href="/servicios.html">Servicios</a>
+        <a href="/casos.html">Casos de uso</a>
+        <a href="/proyectos.html">Proyectos</a>
+        <a href="/nosotros.html">Nosotros</a>
+        <a href="/contacto.html">Contacto</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Contacto</h1>
+      <section id="contacto">
+        <h2>Formulario</h2>
+        <form id="formContacto">
+          <label for="nombre">Nombre</label>
+          <input id="nombre" required />
+          <label for="correo">Correo</label>
+          <input id="correo" type="email" required />
+          <label for="descripcion">Descripción</label>
+          <textarea id="descripcion" required></textarea>
+          <button id="btnEnviarContacto" type="submit">Enviar</button>
+        </form>
+        <div id="confirmacionContacto" class="hidden" role="status">Mensaje enviado</div>
+        <div id="errorContacto" class="hidden" role="alert">No se pudo completar la prueba. Inténtalo más tarde.</div>
+        <div id="sugerencias" class="hidden" role="status">Sugerencias: Automatizar envío de emails, Pipeline de ventas</div>
+        <div id="validacionContacto" class="hidden" role="alert">Por favor completa los campos obligatorios.</div>
+      </section>
+    </main>
+
+    <footer>
+      <a href="/privacy.html">Política de privacidad</a>
+    </footer>
+
+    <script>
+      const descripcionEl = document.getElementById('descripcion');
+      const sugerencias = document.getElementById('sugerencias');
+      descripcionEl.addEventListener('input', () => {
+        if (/email|ventas/i.test(descripcionEl.value)) {
+          sugerencias.classList.remove('hidden');
+        } else {
+          sugerencias.classList.add('hidden');
+        }
+      });
+      document.getElementById('formContacto').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const nombre = document.getElementById('nombre');
+        const correo = document.getElementById('correo');
+        const descripcion = descripcionEl;
+        const confirm = document.getElementById('confirmacionContacto');
+        const error = document.getElementById('errorContacto');
+        confirm.classList.add('hidden');
+        error.classList.add('hidden');
+        document.getElementById('validacionContacto').classList.add('hidden');
+        window.__validationShown = false;
+        sugerencias.classList.add('hidden');
+        const showValidation = (el) => { el.classList.add('error'); el.style.borderColor = 'red'; document.getElementById('validacionContacto').classList.remove('hidden'); window.__validationShown = true; el.focus(); };
+        if (!nombre.value) { showValidation(nombre); return; }
+        if (!correo.value) { showValidation(correo); return; }
+        if (!descripcion.value) { showValidation(descripcion); return; }
+        if (/email|ventas/i.test(descripcion.value)) { sugerencias.classList.remove('hidden'); }
+        confirm.classList.remove('hidden');
+      });
+    </script>
+  </body>
+</html>

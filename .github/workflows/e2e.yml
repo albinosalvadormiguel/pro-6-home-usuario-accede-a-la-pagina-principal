@@ -1,34 +1,33 @@
 name: E2E Tests (Cucumber + Playwright)
-
 on:
   push:
     branches:
       - main
     paths:
-      - 'features/**'
-      - 'features.support/**'
-      - 'features/support/**'
-      - 'cucumber.js'
-      - 'package.json'
-      - 'package-lock.json'
-      - '.github/workflows/e2e.yml'
-      - 'index.html'
-      - 'src/**'
-      - 'public/**'
+      - "features/**"
+      - "features.support/**"
+      - "features/support/**"
+      - "cucumber.js"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/e2e.yml"
+      - "index.html"
+      - "src/**"
+      - "public/**"
   pull_request:
     branches:
       - main
     paths:
-      - 'features/**'
-      - 'features.support/**'
-      - 'features/support/**'
-      - 'cucumber.js'
-      - 'package.json'
-      - 'package-lock.json'
-      - '.github/workflows/e2e.yml'
-      - 'index.html'
-      - 'src/**'
-      - 'public/**'
+      - "features/**"
+      - "features.support/**"
+      - "features/support/**"
+      - "cucumber.js"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/e2e.yml"
+      - "index.html"
+      - "src/**"
+      - "public/**"
 
 jobs:
   test:
@@ -45,8 +44,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: "20"
+          cache: "npm"
 
       - name: Cache Playwright browsers
         uses: actions/cache@v4

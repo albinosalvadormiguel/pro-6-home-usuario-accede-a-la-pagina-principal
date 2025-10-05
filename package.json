@@ -7,9 +7,12 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
+    "start": "node server.js",
+    "dev": "node server.js",
+    "build": "npm run css:build",
+    "css:build": "sass src/styles/main.scss public/styles.css --no-source-map",
+    "css:watch": "sass --watch src/styles/main.scss public/styles.css --no-source-map",
+    "preview": "node server.js",
     "test": "npm run test:e2e",
     "test:e2e": "cucumber-js"
   },
@@ -17,6 +20,7 @@
     "@cucumber/cucumber": "^12.2.0",
     "@playwright/test": "^1.55.1",
     "playwright": "^1.55.1",
+    "sass": "^1.77.6",
     "vite": "^7.1.9"
   }
 }

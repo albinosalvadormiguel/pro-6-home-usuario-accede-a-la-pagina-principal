@@ -1,152 +1,229 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Web Criterios</title>
-    <style>
-      body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji"; margin: 0; }
-      header { display:flex; align-items:center; justify-content:space-between; padding:12px 20px; border-bottom:1px solid #eee; }
-      .logo { font-weight: 700; }
-      nav a { margin-right: 12px; text-decoration:none; color:#333; }
-      main { padding: 20px; }
-      footer { margin-top: 40px; padding: 12px 20px; border-top: 1px solid #eee; display:flex; gap: 12px; }
-      #cookie-banner { position: fixed; bottom: 12px; left: 12px; right: 12px; background: #fff6e6; border: 1px solid #f3d39a; padding: 12px; display: none; }
-      #cookie-banner.show { display: block; }
-      .hidden { display: none; }
-      label { display:block; margin: 8px 0 4px; }
-      input, textarea { padding:8px; width: 320px; max-width: 100%; }
-      button { padding:8px 12px; }
-      section { margin-bottom: 36px; }
-      #sugerencias { border: 1px dashed #aaa; padding: 8px; margin-top: 8px; }
-    </style>
-  </head>
-  <body>
-    <header>
-      <div id="logo" class="logo">MiLogo</div>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Irydium — Agentes IA con garantía de resultados | Irydium.es</title>
+  <meta name="description"
+    content="Irydium automatiza procesos críticos con agentes auditables y entrega operativa garantizada para empresas y administraciones.">
+  <link rel="canonical" href="https://irydium.es/" />
+  <link rel="stylesheet" href="/public/styles.css" />
+</head>
+
+<body>
+  <header>
+    <div id="logo" class="logo">MiLogo</div>
       <nav aria-label="Menú principal">
-        <a href="#servicios">Servicios</a>
-        <a href="#casos">Casos de uso</a>
-        <a href="#proyectos">Proyectos</a>
-        <a href="#nosotros">Nosotros</a>
-        <a href="#contacto">Contacto</a>
+        <a href="/index.html">Home</a>
+        <a href="/src/pages/servicios.html">Servicios</a>
+        <a href="/src/pages/casos.html">Casos de uso</a>
+        <a href="/src/pages/proyectos.html">Proyectos</a>
+        <a href="/src/pages/nosotros.html">Nosotros</a>
+        <a href="/src/pages/contacto.html">Contacto</a>
       </nav>
-    </header>
+  </header>
 
-    <main>
-      <section id="home">
-        <h1>Página principal</h1>
-      </section>
+  <main>
+    <section id="home">
+      <h1>Página principal</h1>
+    </section>
 
-      <section id="prueba-automatizacion" aria-label="Prueba una automatización">
-        <h2>Prueba una automatización</h2>
-        <label for="emailPrueba">Correo</label>
-        <input id="emailPrueba" type="email" placeholder="tu@email" />
-        <button id="btnEnviarPrueba">Enviar prueba</button>
-        <div id="resultadoPrueba" class="hidden" role="status">Automatización enviada correctamente</div>
-        <div id="errorPrueba" class="hidden" role="alert">No se pudo completar la prueba. Inténtalo más tarde.</div>
-      </section>
+    <section id="prueba-automatizacion" aria-label="Prueba una automatización">
+      <h2>Prueba una automatización</h2>
+      <label for="emailPrueba">Correo</label>
+      <input id="emailPrueba" type="email" placeholder="tu@email" />
+      <button id="btnEnviarPrueba">Enviar prueba</button>
+      <div id="resultadoPrueba" class="hidden" role="status">Automatización enviada correctamente</div>
+      <div id="errorPrueba" class="hidden" role="alert">No se pudo completar la prueba. Inténtalo más tarde.</div>
+    </section>
 
-      <section id="servicios"><h2>Servicios</h2></section>
-      <section id="casos"><h2>Casos de uso</h2></section>
-      <section id="proyectos"><h2>Proyectos</h2></section>
-      <section id="nosotros"><h2>Nosotros</h2></section>
+    <section id="servicios">
+      <h2>Servicios</h2>
+      <ul>
+        <li>Agentes de atención y tramitación</li>
+        <li>Orquestación de procesos multi-sistema</li>
+        <li>Bots para backoffice y calidad de datos</li>
+        <li>Integración con ERPs/CRMs y SSO</li>
+        <li>Auditoría y cumplimiento (logs, trazabilidad)</li>
+      </ul>
+    </section>
 
-      <section id="contacto">
-        <h2>Contacto</h2>
-        <form id="formContacto">
-          <label for="nombre">Nombre</label>
-          <input id="nombre" required />
-          <label for="correo">Correo</label>
-          <input id="correo" type="email" required />
-          <label for="descripcion">Descripción</label>
-          <textarea id="descripcion" required></textarea>
-          <button id="btnEnviarContacto" type="submit">Enviar</button>
-        </form>
-        <div id="confirmacionContacto" class="hidden" role="status">Mensaje enviado</div>
-        <div id="errorContacto" class="hidden" role="alert">No se pudo completar la prueba. Inténtalo más tarde.</div>
-        <div id="sugerencias" class="hidden" role="status">Sugerencias: Automatizar envío de emails, Pipeline de ventas</div>
-        <div id="validacionContacto" class="hidden" role="alert">Por favor completa los campos obligatorios.</div>
-      </section>
-    </main>
+    <section id="como-funciona" aria-label="Cómo funciona">
+      <h2>Cómo funciona</h2>
+      <ol>
+        <li><strong>Descubrimiento</strong>: Mapeo de procesos y definición de KPIs ([–30%] tiempo, [–40%] errores).
+        </li>
+        <li><strong>Despliegue controlado</strong>: Agentes auditables en entorno seguro ([X semanas]).</li>
+        <li><strong>Operación garantizada</strong>: Soporte, métricas y mejora continua.</li>
+      </ol>
+    </section>
 
-    <footer>
-      <a href="/privacy.html">Política de privacidad</a>
-    </footer>
+    <section id="casos">
+      <h2>Casos de uso</h2>
+      <article>
+        <h3>Ayuntamiento de [Ciudad]</h3>
+        <p>Agente de registro y cita previa. KPIs: tiempo medio [–35%], incidencias [–45%].</p>
+      </article>
+      <article>
+        <h3>Pyme logística</h3>
+        <p>Agente de trazabilidad y albaranes. KPIs: errores [–40%], SLA entregas [+12%].</p>
+      </article>
+    </section>
+    <section id="proyectos">
+      <h2>Proyectos</h2>
+    </section>
+    <section id="nosotros">
+      <h2>Nosotros</h2>
+      <p>
+        <a href="#contacto">Pide garantía de resultados</a>
+        ·
+        <a href="#consulta">Consulta técnica gratuita</a>
+      </p>
+    </section>
 
-    <div id="cookie-banner" role="dialog" aria-label="Consentimiento de cookies">
-      <p>Usamos cookies. ¿Aceptas?</p>
-      <button id="btnAceptarCookies">Aceptar todas</button>
-      <button id="btnRechazarCookies">Rechazar</button>
-    </div>
+    <section id="social-proof" aria-label="Confían en Irydium">
+      <h2>Confían en Irydium</h2>
+      <blockquote>“Pasan de PowerPoints a producción: el cambio en [X semanas] fue real.” — Dir. Operaciones, [Sector]
+      </blockquote>
+      <div aria-label="logos">
+        <span>logo1.svg</span>
+        <span>logo2.svg</span>
+        <span>logo3.svg</span>
+        <span>logo4.svg</span>
+      </div>
+    </section>
 
-    <script>
-      // Simulación simple para demo TDD
-      const banner = document.getElementById('cookie-banner');
-      const consent = localStorage.getItem('cookieConsent');
-      if (!consent) {
-        banner.classList.add('show');
-      }
-      document.getElementById('btnAceptarCookies').addEventListener('click', () => {
-        banner.classList.remove('show');
-        document.cookie = 'consent=all; path=/';
-        localStorage.setItem('cookieConsent', 'accepted');
-      });
-      document.getElementById('btnRechazarCookies').addEventListener('click', () => {
-        banner.classList.remove('show');
-        localStorage.setItem('cookieConsent', 'rejected');
-      });
+    <section id="faq" aria-label="Preguntas frecuentes">
+      <h2>FAQ</h2>
+      <details>
+        <summary>¿Qué KPIs medimos?</summary>
+        <p>Tiempo, errores, coste y satisfacción.</p>
+      </details>
+      <details>
+        <summary>¿Cómo evitáis “pilotos eternos”?</summary>
+        <p>Plan de despliegue con hitos y salida a operación.</p>
+      </details>
+      <details>
+        <summary>¿Seguridad y cumplimiento?</summary>
+        <p>SSO, cifrado, logs, auditoría.</p>
+      </details>
+      <details>
+        <summary>¿Integraciones?</summary>
+        <p>ERPs/CRMs, APIs y RPA donde aporte.</p>
+      </details>
+      <details>
+        <summary>¿Costes?</summary>
+        <p>Faseada, con TCO y retorno esperado.</p>
+      </details>
+      <details>
+        <summary>¿Soporte?</summary>
+        <p>Soporte operativo y mejora continua.</p>
+      </details>
+    </section>
 
-      const descripcionEl = document.getElementById('descripcion');
-      const sugerencias = document.getElementById('sugerencias');
 
-      // Mostrar/ocultar sugerencias en tiempo real según palabras clave
-      descripcionEl.addEventListener('input', () => {
-        if (/email|ventas/i.test(descripcionEl.value)) {
-          sugerencias.classList.remove('hidden');
-        } else {
-          sugerencias.classList.add('hidden');
-        }
-      });
 
-      document.getElementById('formContacto').addEventListener('submit', (e) => {
-        e.preventDefault();
-        const nombre = document.getElementById('nombre');
-        const correo = document.getElementById('correo');
-        const descripcion = descripcionEl;
-        const confirm = document.getElementById('confirmacionContacto');
-        const error = document.getElementById('errorContacto');
-        confirm.classList.add('hidden');
-        error.classList.add('hidden');
-        // resetear mensaje de validación en cada submit
-        document.getElementById('validacionContacto').classList.add('hidden');
-        window.__validationShown = false;
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <form id="formContacto">
+        <label for="nombre">Nombre</label>
+        <input id="nombre" required />
+        <label for="correo">Correo</label>
+        <input id="correo" type="email" required />
+        <label for="descripcion">Descripción</label>
+        <textarea id="descripcion" required></textarea>
+        <button id="btnEnviarContacto" type="submit">Enviar</button>
+      </form>
+      <div id="confirmacionContacto" class="hidden" role="status">Mensaje enviado</div>
+      <div id="errorContacto" class="hidden" role="alert">No se pudo completar la prueba. Inténtalo más tarde.</div>
+      <div id="sugerencias" class="hidden" role="status">Sugerencias: Automatizar envío de emails, Pipeline de ventas
+      </div>
+      <div id="validacionContacto" class="hidden" role="alert">Por favor completa los campos obligatorios.</div>
+    </section>
+  </main>
+
+  <!-- Ancla para CTA secundaria del contenido (no usada por tests) -->
+  <div id="consulta"></div>
+
+  <footer>
+    <a href="/privacy.html">Política de privacidad</a>
+  </footer>
+
+  <div id="cookie-banner" role="dialog" aria-label="Consentimiento de cookies">
+    <p>Usamos cookies. ¿Aceptas?</p>
+    <button id="btnAceptarCookies">Aceptar todas</button>
+    <button id="btnRechazarCookies">Rechazar</button>
+  </div>
+
+  <script>
+    // Simulación simple para demo TDD
+    const banner = document.getElementById('cookie-banner');
+    const consent = localStorage.getItem('cookieConsent');
+    if (!consent) {
+      banner.classList.add('show');
+    }
+    document.getElementById('btnAceptarCookies').addEventListener('click', () => {
+      banner.classList.remove('show');
+      document.cookie = 'consent=all; path=/';
+      localStorage.setItem('cookieConsent', 'accepted');
+    });
+    document.getElementById('btnRechazarCookies').addEventListener('click', () => {
+      banner.classList.remove('show');
+      localStorage.setItem('cookieConsent', 'rejected');
+    });
+
+    const descripcionEl = document.getElementById('descripcion');
+    const sugerencias = document.getElementById('sugerencias');
+
+    // Mostrar/ocultar sugerencias en tiempo real según palabras clave
+    descripcionEl.addEventListener('input', () => {
+      if (/email|ventas/i.test(descripcionEl.value)) {
+        sugerencias.classList.remove('hidden');
+      } else {
         sugerencias.classList.add('hidden');
-        const showValidation = (el) => { el.classList.add('error'); el.style.borderColor = 'red'; document.getElementById('validacionContacto').classList.remove('hidden'); window.__validationShown = true; el.focus(); };
-        if (!nombre.value) { showValidation(nombre); return; }
-        if (!correo.value) { showValidation(correo); return; }
-        if (!descripcion.value) { showValidation(descripcion); return; }
-        // Sugerencias simples por palabras clave
-        if (/email|ventas/i.test(descripcion.value)) {
-          sugerencias.classList.remove('hidden');
-        }
-        confirm.classList.remove('hidden');
-      });
+      }
+    });
 
-      document.getElementById('btnEnviarPrueba').addEventListener('click', () => {
-        const email = document.getElementById('emailPrueba');
-        const result = document.getElementById('resultadoPrueba');
-        const error = document.getElementById('errorPrueba');
-        if (email.value && email.value.includes('@')) {
-          result.textContent = 'Automatización enviada correctamente';
-          result.classList.remove('hidden');
-          error.classList.add('hidden');
-        } else {
-          // Mostrar error específico para TAL-13
-          error.classList.remove('hidden');
-          result.classList.add('hidden');
-        }
-      });
-    </script>
-  </body>
+    document.getElementById('formContacto').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nombre = document.getElementById('nombre');
+      const correo = document.getElementById('correo');
+      const descripcion = descripcionEl;
+      const confirm = document.getElementById('confirmacionContacto');
+      const error = document.getElementById('errorContacto');
+      confirm.classList.add('hidden');
+      error.classList.add('hidden');
+      // resetear mensaje de validación en cada submit
+      document.getElementById('validacionContacto').classList.add('hidden');
+      window.__validationShown = false;
+      sugerencias.classList.add('hidden');
+      const showValidation = (el) => { el.classList.add('error'); el.style.borderColor = 'red'; document.getElementById('validacionContacto').classList.remove('hidden'); window.__validationShown = true; el.focus(); };
+      if (!nombre.value) { showValidation(nombre); return; }
+      if (!correo.value) { showValidation(correo); return; }
+      if (!descripcion.value) { showValidation(descripcion); return; }
+      // Sugerencias simples por palabras clave
+      if (/email|ventas/i.test(descripcion.value)) {
+        sugerencias.classList.remove('hidden');
+      }
+      confirm.classList.remove('hidden');
+    });
+
+    document.getElementById('btnEnviarPrueba').addEventListener('click', () => {
+      const email = document.getElementById('emailPrueba');
+      const result = document.getElementById('resultadoPrueba');
+      const error = document.getElementById('errorPrueba');
+      if (email.value && email.value.includes('@')) {
+        result.textContent = 'Automatización enviada correctamente';
+        result.classList.remove('hidden');
+        error.classList.add('hidden');
+      } else {
+        // Mostrar error específico para TAL-13
+        error.classList.remove('hidden');
+        result.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+
 </html>
