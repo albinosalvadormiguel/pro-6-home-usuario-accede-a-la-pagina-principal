@@ -16,9 +16,13 @@ When('el usuario hace clic en "Servicios"', async function () {
   await this.page.getByRole('link', { name: 'Servicios' }).click();
 });
 
-Then('el sistema debe redirigir correctamente a la página de servicios', async function () {
-  await expect(this.page).toHaveURL(new RegExp('/src/pages/servicios.html'));
-  await expect(this.page.getByRole('heading', { level: 1, name: 'Servicios' })).toBeVisible();
+When('el usuario hace clic en "Login"', async function () {
+  await this.page.getByRole('link', { name: 'Login' }).click();
+});
+
+Then('el sistema debe redirigir correctamente a la página de login', async function () {
+  await expect(this.page).toHaveURL(new RegExp('/src/pages/users/login.html'));
+  await expect(this.page.getByRole('heading', { level: 1, name: 'Login' })).toBeVisible();
 });
 
 Given('el usuario está en cualquier página', async function () {
