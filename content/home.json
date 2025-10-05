@@ -1,0 +1,57 @@
+{
+  "hero": {
+    "title": "Agentes que trabajan. Nosotros firmamos resultados.",
+    "subtitle": "Olvida pilotos infinitos: redesplegamos soluciones con métricas claras y garantías operativas para tu organización.",
+    "bullets": [
+      "KPI claros desde el inicio: reducción de tiempos, errores y costes.",
+      "Implementación segura para entornos regulados.",
+      "Formación + transferencia para tu equipo."
+    ],
+    "primary_cta": {"label":"Pide garantía de resultados","href":"#contacto"},
+    "secondary_cta": {"label":"Consulta técnica gratuita","href":"#consulta"},
+    "short_hero": "Agentes IA auditables con KPIs y operación garantizada."
+  },
+  "how_it_works": [
+    {"step":"Descubrimiento","desc":"Mapeo de procesos y definición de KPIs ([–30%] tiempo, [–40%] errores)."},
+    {"step":"Despliegue controlado","desc":"Agentes auditables en entorno seguro ([X semanas])."},
+    {"step":"Operación garantizada","desc":"Soporte, métricas y mejora continua."}
+  ],
+  "services": [
+    "Agentes de atención y tramitación",
+    "Orquestación de procesos multi-sistema",
+    "Bots para backoffice y calidad de datos",
+    "Integración con ERPs/CRMs y SSO",
+    "Auditoría y cumplimiento (logs, trazabilidad)"
+  ],
+  "case_studies": [
+    {"title":"Ayuntamiento de [Ciudad]","kpis":["Tiempo medio [–35%]","Incidencias [–45%]"],"summary":"Agente de registro y cita previa."},
+    {"title":"Pyme logística","kpis":["Errores [–40%]","SLA entregas [+12%]"],"summary":"Agente de trazabilidad y albaranes."}
+  ],
+  "social_proof": {
+    "testimonial":"Pasan de PowerPoints a producción: el cambio en [X semanas] fue real.",
+    "logos":["logo1.svg","logo2.svg","logo3.svg","logo4.svg"]
+  },
+  "faq": [
+    {"q":"¿Qué KPIs medimos?","a":"Tiempo, errores, coste y satisfacción."},
+    {"q":"¿Cómo evitáis pilotos eternos?","a":"Plan de despliegue con hitos y salida a operación."},
+    {"q":"¿Seguridad y cumplimiento?","a":"SSO, cifrado, logs, auditoría."},
+    {"q":"¿Integraciones?","a":"ERPs/CRMs, APIs y RPA donde aporte."},
+    {"q":"¿Costes?","a":"Faseada, con TCO y retorno esperado."},
+    {"q":"¿Soporte?","a":"Soporte operativo y mejora continua."}
+  ],
+  "meta": {
+    "title":"Irydium — Agentes IA con garantía de resultados | Irydium.es",
+    "description":"Irydium automatiza procesos críticos con agentes auditables y entrega operativa garantizada para empresas y administraciones.",
+    "canonical":"https://irydium.es/"
+  },
+  "microcopy": {
+    "buttons": {"primary":"Pide garantía de resultados","secondary":"Consulta técnica gratuita"},
+    "form": {"email_placeholder":"Introduce tu correo corporativo","gdpr":"Cumplimos GDPR. Usaremos tus datos solo para responder.","success":"Gracias, te contactamos en [24-48h].","error":"Revisa el formato del correo."}
+  },
+  "seo_keywords": ["agentes ia", "automatización procesos", "bots auditables", "garantía operativa", "cumplimiento y trazabilidad", "agentes para administraciones", "agentes para educación", "integración erp crm", "kpis automatización", "orquestación procesos", "sso cifrado auditoría", "mejora continua"],
+  "ab_test_plan": [
+    {"name":"A/B Hero rotation","hypothesis":"Rotar 3 variantes de hero mejora CTR de CTA principal.","kpi":"CTR CTA principal","duration":"[2-3 semanas]"},
+    {"name":"CTA wording","hypothesis":"CTA 'Pide garantía de resultados' convierte mejor que 'Solicitar demo real'.","kpi":"CR de formulario","duration":"[2 semanas]"},
+    {"name":"Social proof prominence","hypothesis":"Mover testimonial arriba reduce rebote.","kpi":"Bounce rate","duration":"[2 semanas]"}
+  ]
+}

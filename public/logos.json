@@ -1,0 +1,8 @@
+{
+  "logos": [
+    {"name":"Logo 1","src":"/public/logo1.svg"},
+    {"name":"Logo 2","src":"/public/logo2.svg"},
+    {"name":"Logo 3","src":"/public/logo3.svg"},
+    {"name":"Logo 4","src":"/public/logo4.svg"}
+  ]
+}

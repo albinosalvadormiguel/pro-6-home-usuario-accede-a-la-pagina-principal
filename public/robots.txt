@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://irydium.es/sitemap.xml
