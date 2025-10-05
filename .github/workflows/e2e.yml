@@ -3,12 +3,40 @@ name: E2E Tests (Cucumber + Playwright)
 on:
   push:
     branches:
-      - '**'
+      - main
+    paths:
+      - 'features/**'
+      - 'features.support/**'
+      - 'features/support/**'
+      - 'cucumber.js'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/e2e.yml'
+      - 'index.html'
+      - 'src/**'
+      - 'public/**'
   pull_request:
+    branches:
+      - main
+    paths:
+      - 'features/**'
+      - 'features.support/**'
+      - 'features/support/**'
+      - 'cucumber.js'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/e2e.yml'
+      - 'index.html'
+      - 'src/**'
+      - 'public/**'
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox, webkit]
 
     steps:
       - name: Checkout
@@ -31,17 +59,19 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Install Playwright browsers (Chromium)
-        run: npx playwright install --with-deps chromium
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps ${{ matrix.browser }}
 
       - name: Run E2E tests
         run: npm run test:e2e
+        env:
+          PLAYWRIGHT_BROWSER: ${{ matrix.browser }}
 
       - name: Upload Playwright traces
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-traces
+          name: playwright-traces-${{ matrix.browser }}
           path: artifacts/*.zip
           if-no-files-found: ignore
 
@@ -49,6 +79,6 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: screenshots
+          name: screenshots-${{ matrix.browser }}
           path: artifacts/*.png
           if-no-files-found: ignore

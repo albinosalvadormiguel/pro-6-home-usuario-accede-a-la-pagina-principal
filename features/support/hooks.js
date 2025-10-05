@@ -1,6 +1,6 @@
 // @ts-nocheck
 const { BeforeAll, AfterAll, Before, After, setDefaultTimeout } = require('@cucumber/cucumber');
-const { chromium } = require('playwright');
+const { chromium, firefox, webkit } = require('playwright');
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
@@ -77,7 +77,9 @@ BeforeAll(async () => {
       staticServer.listen(5173, () => resolve());
     });
   }
-  browser = await chromium.launch({ headless: true });
+  const target = (process.env.PLAYWRIGHT_BROWSER || 'chromium').toLowerCase();
+  const browserType = target === 'firefox' ? firefox : target === 'webkit' ? webkit : chromium;
+  browser = await browserType.launch({ headless: true });
 });
 
 Before(async function () {
