@@ -1,0 +1,16 @@
+{
+  "name": "web_criterios",
+  "version": "1.0.0",
+  "description": "Versión inicial sobre la creación de web con sistema de criterios, features, criterios de aceptacion",
+  "license": "ISC",
+  "author": "Albino Salvador",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test:e2e",
+    "test:e2e": "cucumber-js"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^12.2.0"
+  }
+}
