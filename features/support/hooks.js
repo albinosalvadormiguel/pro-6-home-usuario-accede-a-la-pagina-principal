@@ -36,6 +36,11 @@ async function isServerUp(url) {
 BeforeAll(async () => {
   // Simple static server to serve project root on port 5173
   const rootDir = process.cwd();
+  // Ensure artifacts directory exists for CI uploads (traces, screenshots)
+  const artifactsDir = path.join(rootDir, 'artifacts');
+  if (!fs.existsSync(artifactsDir)) {
+    fs.mkdirSync(artifactsDir, { recursive: true });
+  }
   staticServer = http.createServer((req, res) => {
     try {
       let reqPath = decodeURIComponent(req.url || '/');
@@ -77,10 +82,26 @@ BeforeAll(async () => {
 
 Before(async function () {
   this.context = await browser.newContext();
+  // Start tracing for each scenario (screenshots + snapshots) for CI debugging
+  try {
+    await this.context.tracing.start({ screenshots: true, snapshots: true });
+  } catch (_) { /* ignore tracing start issues */ }
   this.page = await this.context.newPage();
 });
 
 After(async function () {
+  // Save a per-scenario screenshot and trace for CI analysis
+  try {
+    if (this.page) {
+      const fileSafe = Date.now();
+      await this.page.screenshot({ path: path.join(process.cwd(), 'artifacts', `screenshot-${fileSafe}.png`) });
+    }
+    if (this.context) {
+      const fileSafe = Date.now();
+      await this.context.tracing.stop({ path: path.join(process.cwd(), 'artifacts', `trace-${fileSafe}.zip`) });
+    }
+  } catch (_) { /* ignore capture issues */ }
+
   if (this.context) {
     try {
       await this.context.close();
