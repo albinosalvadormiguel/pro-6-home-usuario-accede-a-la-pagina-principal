@@ -6,7 +6,7 @@ Feature: Registro y autenticación de usuarios
     When introduce un correo válido y una contraseña segura
     And hace clic en "Crear cuenta"
     Then el sistema debe crear la cuenta
-    And mostrar un mensaje de confirmación
+    And se muestra un mensaje de confirmación de registro
 
   # TAL-4: Usuario inicia sesión (PRO-9)
   Scenario: Usuario inicia sesión

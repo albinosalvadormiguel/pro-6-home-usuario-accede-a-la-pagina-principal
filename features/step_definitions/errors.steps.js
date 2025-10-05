@@ -15,8 +15,9 @@ When('ocurre un error de conexión o envío', async function () {
 });
 
 Then('debe mostrarse un mensaje: {string}', async function (mensaje) {
-  // En esta demo el mensaje de error real está en el formulario de contacto; mantendremos placeholder a implementar
-  await expect(this.page.locator('text="' + mensaje + '"')).toBeVisible();
+  // Verifica el contenedor específico de error en prueba de automatización
+  await expect(this.page.locator('#errorPrueba')).toBeVisible();
+  await expect(this.page.locator('#errorPrueba')).toContainText(mensaje);
 });
 
 // TAL-14: Campos incompletos en formulario
@@ -33,12 +34,12 @@ When('intenta enviar el formulario', async function () {
 });
 
 Then('el sistema debe marcar el campo en rojo', async function () {
-  const borde = await this.page.$eval('#nombre', el => getComputedStyle(el).borderColor);
-  expect(borde).toMatch(/rgb\(255, 0, 0\)|red/);
+  // Versión estable: esperamos la clase 'error' en el campo requerido
+  await this.page.waitForSelector('#nombre.error', { timeout: 15000 });
 });
 
-Then('mostrar un mensaje de validación clara', async function () {
-  // Podríamos mostrar un aria-invalid o mensaje; placeholder
-  // Validaremos que no aparece confirmación y que el foco sigue en el campo requerido
-  await expect(this.page.locator('#confirmacionContacto')).toHaveClass(/hidden/);
+Then('no se muestra la confirmación de envío', async function () {
+  // Confirmación debe permanecer oculta cuando falta un campo obligatorio
+  await this.page.waitForTimeout(50);
+  await expect(this.page.locator('#confirmacionContacto')).toBeHidden();
 });

@@ -66,6 +66,7 @@
         <div id="confirmacionContacto" class="hidden" role="status">Mensaje enviado</div>
         <div id="errorContacto" class="hidden" role="alert">No se pudo completar la prueba. Inténtalo más tarde.</div>
         <div id="sugerencias" class="hidden" role="status">Sugerencias: Automatizar envío de emails, Pipeline de ventas</div>
+        <div id="validacionContacto" class="hidden" role="alert">Por favor completa los campos obligatorios.</div>
       </section>
     </main>
 
@@ -96,20 +97,35 @@
         localStorage.setItem('cookieConsent', 'rejected');
       });
 
+      const descripcionEl = document.getElementById('descripcion');
+      const sugerencias = document.getElementById('sugerencias');
+
+      // Mostrar/ocultar sugerencias en tiempo real según palabras clave
+      descripcionEl.addEventListener('input', () => {
+        if (/email|ventas/i.test(descripcionEl.value)) {
+          sugerencias.classList.remove('hidden');
+        } else {
+          sugerencias.classList.add('hidden');
+        }
+      });
+
       document.getElementById('formContacto').addEventListener('submit', (e) => {
         e.preventDefault();
         const nombre = document.getElementById('nombre');
         const correo = document.getElementById('correo');
-        const descripcion = document.getElementById('descripcion');
+        const descripcion = descripcionEl;
         const confirm = document.getElementById('confirmacionContacto');
         const error = document.getElementById('errorContacto');
-        const sugerencias = document.getElementById('sugerencias');
         confirm.classList.add('hidden');
         error.classList.add('hidden');
+        // resetear mensaje de validación en cada submit
+        document.getElementById('validacionContacto').classList.add('hidden');
+        window.__validationShown = false;
         sugerencias.classList.add('hidden');
-        if (!nombre.value) { nombre.classList.add('error'); nombre.style.borderColor = 'red'; return; }
-        if (!correo.value) { correo.classList.add('error'); correo.style.borderColor = 'red'; return; }
-        if (!descripcion.value) { descripcion.classList.add('error'); descripcion.style.borderColor = 'red'; return; }
+        const showValidation = (el) => { el.classList.add('error'); el.style.borderColor = 'red'; document.getElementById('validacionContacto').classList.remove('hidden'); window.__validationShown = true; el.focus(); };
+        if (!nombre.value) { showValidation(nombre); return; }
+        if (!correo.value) { showValidation(correo); return; }
+        if (!descripcion.value) { showValidation(descripcion); return; }
         // Sugerencias simples por palabras clave
         if (/email|ventas/i.test(descripcion.value)) {
           sugerencias.classList.remove('hidden');

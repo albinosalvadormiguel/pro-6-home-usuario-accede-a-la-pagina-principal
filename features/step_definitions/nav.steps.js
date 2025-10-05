@@ -7,8 +7,13 @@ Given('el menú principal está visible', async function () {
   await expect(this.page.locator('nav[aria-label="Menú principal"]')).toBeVisible();
 });
 
-When('el usuario hace clic en {string}', async function (texto) {
+When('el usuario hace clic en el enlace {string}', async function (texto) {
   await this.page.getByRole('link', { name: texto }).click();
+});
+
+// Alias específico para el texto del feature original
+When('el usuario hace clic en "Servicios"', async function () {
+  await this.page.getByRole('link', { name: 'Servicios' }).click();
 });
 
 Then('el sistema debe redirigir correctamente a la página de servicios', async function () {

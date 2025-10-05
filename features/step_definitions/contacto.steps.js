@@ -8,7 +8,7 @@ Given('el usuario está en la página "Contacto"', async function () {
   await expect(this.page.locator('#contacto')).toBeVisible();
 });
 
-When('rellena los campos obligatorios (nombre, correo, descripción)', async function () {
+When(/^rellena los campos obligatorios \(nombre, correo, descripci[oó]n\)$/u, async function () {
   await this.page.fill('#nombre', 'Juan');
   await this.page.fill('#correo', 'juan@example.com');
   await this.page.fill('#descripcion', 'Necesito automatizar emails de ventas');
@@ -31,17 +31,18 @@ Then('mostrar un mensaje de confirmación', async function () {
   await expect(this.page.locator('#confirmacionContacto')).toContainText('Mensaje enviado');
 });
 
-// Sugerencias (placeholder, en esta demo no hay UI real de sugerencias)
+// Sugerencias
 Given('el usuario introduce una descripción con palabras clave', async function () {
   await this.page.goto(this.baseUrl);
   await this.page.fill('#descripcion', 'email ventas');
 });
 
-When('el campo "Descripción" detecta términos relacionados (por ejemplo "email", "ventas")', async function () {
-  // Aquí se esperaría lógica de sugerencias; dejamos una expectativa placeholder que fallará hasta implementarlo
+When(/^el campo "Descripción" detecta términos relacionados \(por ejemplo "email", "ventas"\)$/u, async function () {
+  // Dispara evento de input para que se muestren sugerencias
+  await this.page.focus('#descripcion');
+  await this.page.keyboard.type(' '); // fuerza evento input
 });
 
-Then('el sistema debe mostrar sugerencias de automatización relevantes', async function () {
-  // Placeholder: a implementar más adelante (fallará hasta tener UI de sugerencias)
+Then(/^el sistema debe mostrar sugerencias de automatizaci[oó]n relevantes$/u, async function () {
   await expect(this.page.locator('#sugerencias')).toBeVisible();
 });

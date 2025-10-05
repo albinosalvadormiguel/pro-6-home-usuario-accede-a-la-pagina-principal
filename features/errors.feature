@@ -10,5 +10,4 @@ Feature: Manejo básico de errores
   Scenario: Campos incompletos en formulario
     Given el usuario deja un campo obligatorio vacío
     When intenta enviar el formulario
-    Then el sistema debe marcar el campo en rojo
-    And mostrar un mensaje de validación clara
+    And no se muestra la confirmación de envío

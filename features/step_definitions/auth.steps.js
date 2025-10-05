@@ -4,7 +4,7 @@ const { expect } = require('@playwright/test');
 
 // TAL-3: Registro
 Given('el usuario está en la página de registro', async function () {
-  await this.page.goto(this.baseUrl + '/registro');
+  await this.page.goto(this.baseUrl + '/registro.html');
 });
 
 When('introduce un correo válido y una contraseña segura', async function () {
@@ -20,13 +20,15 @@ Then('el sistema debe crear la cuenta', async function () {
   await expect(this.page.locator('#registro-confirmacion')).toBeVisible();
 });
 
-Then('mostrar un mensaje de confirmación', async function () {
+// Nota: el paso genérico "mostrar un mensaje de confirmación" se maneja en contacto.steps.js
+
+Then('se muestra un mensaje de confirmación de registro', async function () {
   await expect(this.page.locator('#registro-confirmacion')).toContainText('Cuenta creada');
 });
 
 // TAL-4: Login
 Given('el usuario tiene una cuenta registrada', async function () {
-  await this.page.goto(this.baseUrl + '/login');
+  await this.page.goto(this.baseUrl + '/login.html');
 });
 
 When('introduce sus credenciales correctas', async function () {
@@ -45,7 +47,7 @@ Then('redirigirlo a su panel o al inicio', async function () {
 
 // TAL-5: Recuperar contraseña
 Given('el usuario olvidó su contraseña', async function () {
-  await this.page.goto(this.baseUrl + '/recuperar');
+  await this.page.goto(this.baseUrl + '/recuperar.html');
 });
 
 When('solicita recuperación con su correo registrado', async function () {

@@ -6,6 +6,6 @@ module.exports = {
       'features/step_definitions/**/*.js'
     ],
     publishQuiet: true,
-    paths: ['features/**/*.feature']
+    // Do not hardcode paths; allow CLI args to select features
   }
 };
